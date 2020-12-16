@@ -1,0 +1,57 @@
+From d619f62a79debf5932df13b144569fa1a084f2bc Mon Sep 17 00:00:00 2001
+From: cooluc <admin@cooluc.com>
+Date: Sun, 29 Sep 2019 22:14:05 -0400
+Subject: [PATCH] base: Improve Network Traffic layout
+
+---
+ packages/SystemUI/res/layout/status_bar.xml   | 16 ++++++++--------
+ packages/SystemUI/res/layout/system_icons.xml |  2 +-
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/packages/SystemUI/res/layout/status_bar.xml b/packages/SystemUI/res/layout/status_bar.xml
+index 7d7504d1b40f..d7d9fad332e8 100644
+--- a/packages/SystemUI/res/layout/status_bar.xml
++++ b/packages/SystemUI/res/layout/status_bar.xml
+@@ -110,6 +110,14 @@
+             android:clipChildren="false"
+             android:gravity="center_horizontal|center_vertical"/>
+ 
++        <com.android.keyguard.AlphaOptimizedLinearLayout android:id="@+id/system_icon_area"
++            android:layout_width="0dp"
++            android:layout_height="match_parent"
++            android:layout_weight="1"
++            android:orientation="horizontal"
++            android:gravity="center_vertical|end"
++            >
++
+         <com.android.systemui.statusbar.LineageStatusBarItemHolder
+             android:id="@+id/network_traffic_holder"
+             android:layout_width="wrap_content"
+@@ -126,14 +134,6 @@
+ 
+         </com.android.systemui.statusbar.LineageStatusBarItemHolder>
+ 
+-        <com.android.keyguard.AlphaOptimizedLinearLayout android:id="@+id/system_icon_area"
+-            android:layout_width="0dp"
+-            android:layout_height="match_parent"
+-            android:layout_weight="1"
+-            android:orientation="horizontal"
+-            android:gravity="center_vertical|end"
+-            >
+-
+             <include layout="@layout/system_icons" />
+         </com.android.keyguard.AlphaOptimizedLinearLayout>
+     </LinearLayout>
+diff --git a/packages/SystemUI/res/layout/system_icons.xml b/packages/SystemUI/res/layout/system_icons.xml
+index 4ee7242729bb..3d72c0bc5534 100644
+--- a/packages/SystemUI/res/layout/system_icons.xml
++++ b/packages/SystemUI/res/layout/system_icons.xml
+@@ -17,7 +17,7 @@
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+               xmlns:systemui="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/system_icons"
+-    android:layout_width="match_parent"
++    android:layout_width="wrap_content"
+     android:layout_height="match_parent"
+     android:gravity="center_vertical">
+ 

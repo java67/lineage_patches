@@ -1,0 +1,49 @@
+From 25808c6e7c257a0ef5d7152367966da591d97d47 Mon Sep 17 00:00:00 2001
+From: sbwml <984419930@qq.com>
+Date: Wed, 15 Apr 2020 02:24:39 -0400
+Subject: [PATCH] Update build date
+---
+diff --git a/config/common.mk b/config/common.mk
+index 51ba81f..0b657ee 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -259,15 +259,15 @@ ifeq ($(LINEAGE_BUILDTYPE), RELEASE)
+ else
+     ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
+         ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
+-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d_%H%M%S)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
++            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date +%Y%m%d_%H%M%S)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+         else
+-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
++            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+         endif
+     else
+         ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
+-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d_%H%M%S)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
++            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date +%Y%m%d_%H%M%S)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+         else
+-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
++            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+         endif
+     endif
+ endif
+@@ -288,7 +288,7 @@ ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
+                 LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
+                 TARGET_VENDOR_RELEASE_BUILD_ID := $(LINEAGE_EXTRAVERSION)
+             else
+-                TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date -u +%Y%m%d)
++                TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date +%Y%m%d)
+             endif
+         else
+             TARGET_VENDOR_RELEASE_BUILD_ID := $(TARGET_VENDOR_RELEASE_BUILD_ID)
+diff --git a/overlay/common/frameworks/base/packages/SystemUI/res/values/dimens.xml b/overlay/common/frameworks/base/packages/SystemUI/res/values/dimens.xml
+index f380aad..f4c445f 100644
+--- a/overlay/common/frameworks/base/packages/SystemUI/res/values/dimens.xml
++++ b/overlay/common/frameworks/base/packages/SystemUI/res/values/dimens.xml
+@@ -16,5 +16,5 @@
+ */
+ -->
+ <resources>
+-    <dimen name="rounded_corner_content_padding">8dp</dimen>
++    <dimen name="rounded_corner_content_padding">0dp</dimen>
+ </resources>
