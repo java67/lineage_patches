@@ -1,0 +1,18 @@
+From d619f62a79debf5932df13b144569fa1a084f2bc Mon Sep 17 00:00:00 2001
+From: cooluc <admin@cooluc.com>
+Date: Sun, 29 Sep 2019 22:14:05 -0400
+Subject: [PATCH] disable update recovery
+
+---
+diff --git a/applypatch/vendor_flash_recovery.rc b/applypatch/vendor_flash_recovery.rc
+index e4890c8..49e8bea 100644
+--- a/applypatch/vendor_flash_recovery.rc
++++ b/applypatch/vendor_flash_recovery.rc
+@@ -2,7 +2,3 @@ service vendor_flash_recovery /vendor/bin/install-recovery.sh
+     class main
+     oneshot
+     disabled
+-
+-# update recovery if enabled
+-on property:persist.vendor.recovery_update=true
+-    start vendor_flash_recovery
